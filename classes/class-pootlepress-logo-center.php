@@ -213,10 +213,10 @@ class Pootlepress_Center_logo {
 				'type' => 'subheading'
 				);
 		$o[] = array(
-				'name' => 'Primary Menu and Top Menu',
+				'name' => 'Top Menu',
 				'desc' => '',
 				'id' => 'pootlepress-center-logo-notice',
-				'std' => sprintf(("The Logo Inside Nav Canvas Extension will not show Primary Menu when Top Menu checked or both. Find more plugins here <a href=\"%s\" target=\"_blank\">http://www.pootlepress.com/shop</a>" ), "http://www.pootlepress.com/shop" ),
+				'std' => sprintf(("Please note the Logo Inside Nav Canvas Extension will not show if there is a Top Navigation selected. For support please email support@pootlepress.com. Find more plugins here <a href=\"%s\" target=\"_blank\">http://www.pootlepress.com/shop</a>" ), "http://www.pootlepress.com/shop" ),
 				'type' => 'info'
 				);
 		$o[] = array(
