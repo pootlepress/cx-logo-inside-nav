@@ -221,8 +221,8 @@ class Pootlepress_Center_logo {
 				);
 		$o[] = array(
 				'id' => 'pootlepress-center-logo-option', 
-				'name' => __( 'Align Logo by Center', 'pootlepress-center-logo' ), 
-				'desc' => __( 'Enable Center Logo', 'pootlepress-center-logo' ), 
+				'name' => __( 'Logo Inside Nav', 'pootlepress-center-logo' ), 
+				'desc' => __( 'Enable Logo Inside Nav', 'pootlepress-center-logo' ), 
 				'std' => 'true',
 				'type' => 'checkbox'
 				);
