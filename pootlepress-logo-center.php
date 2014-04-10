@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: Canvas Extension - Replace logo by center
+Plugin Name: Canvas Extension - Logo Inside Nav
 Plugin URI: http://pootlepress.com/canvas-extensions/
-Description: An extension for WooThemes Canvas that aligns the logo by center.
-Version: 1.0.2
+Description: An extension for WooThemes Canvas that puts the logo in the center of the primary navigation.
+Version: 0.0.1
 Author: PootlePress
 Author URI: http://pootlepress.com/
 License: GPL version 2 or later - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
