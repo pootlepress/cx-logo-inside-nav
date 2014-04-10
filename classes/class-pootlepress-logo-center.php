@@ -216,7 +216,7 @@ class Pootlepress_Center_logo {
 				'name' => 'Primary Menu and Top Menu',
 				'desc' => '',
 				'id' => 'pootlepress-center-logo-notice',
-				'std' => sprintf(("The Center Logo plugin will not show Primary Menu when Top Menu checked or both. Find more plugins here <a href=\"%s\" target=\"_blank\">http://www.pootlepress.com/shop</a>" ), "http://www.pootlepress.com/shop" ),
+				'std' => sprintf(("The Logo Inside Nav Canvas Extension will not show Primary Menu when Top Menu checked or both. Find more plugins here <a href=\"%s\" target=\"_blank\">http://www.pootlepress.com/shop</a>" ), "http://www.pootlepress.com/shop" ),
 				'type' => 'info'
 				);
 		$o[] = array(
@@ -226,13 +226,13 @@ class Pootlepress_Center_logo {
 				'std' => 'true',
 				'type' => 'checkbox'
 				);
-        $o[] = array(
+        /*$o[] = array(
 				'id' => 'pootlepress-site-title-option', 
 				'name' => __( 'Turn on Site Title', 'pootlepress-site-title' ), 
 				'desc' => __( 'Turn On Title', 'pootlepress-site-title' ), 
 				'std' => 'false',
 				'type' => 'checkbox'
-				);
+				);*/
 		return $o;
 	} // End add_theme_options()
 	
