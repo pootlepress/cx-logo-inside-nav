@@ -209,7 +209,7 @@ class Pootlepress_Center_logo {
 	 */	
 	public function add_theme_options ( $o ) {
 		$o[] = array(
-				'name' => 'Center logo', 
+				'name' => 'Logo Inside Nav', 
 				'type' => 'subheading'
 				);
 		$o[] = array(
