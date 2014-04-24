@@ -370,7 +370,7 @@ class Pootlepress_Center_logo {
 		}
 
 			if ($_stickyenabled == 'true') {
-				add_action('wp_footer', 'fixStickyMobile',10);
+			//	add_action('wp_footer', 'fixStickyMobile',10);
 			}
 		}
 	} // End load_align_right()
