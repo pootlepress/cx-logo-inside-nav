@@ -109,6 +109,12 @@
 .topnav_section .nav_section.third ul li {
   float: left;
 }
+
+#navigation .cart
+{
+    display: none;
+}
+
 @media only screen and (max-width: 767px) {
   .menus .topnav_section .nav_section {
     float: none;
