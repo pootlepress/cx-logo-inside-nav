@@ -200,6 +200,8 @@ class Pootlepress_Center_logo {
 		if ($_rightcenterenabled != 'true')  return null;
 
 		wp_enqueue_style(esc_attr('center_logo'), esc_url(plugins_url('styles/center_logo.css', $this->file)));
+
+        wp_enqueue_script('center_logo', plugins_url('scripts/center_logo.js', $this->file), array('jquery'));
 	} 
 
 	/**
@@ -298,6 +300,17 @@ class Pootlepress_Center_logo {
 		$_stickyenabled  = get_option('pootlepress-sticky-nav-option');
 		if ($_rightcenterenabled == '') $enabled = 'true';
 		if ($_rightcenterenabled == 'true') {
+
+            remove_action( 'woo_header_before', 'woo_nav_toggle', 20);
+            add_action('woo_header_before', 'woo_nav_toggle_custom', 20);
+
+            function woo_nav_toggle_custom () {
+                $logo = getLogoData();
+                $logoBlock = $logo['logo_block'];
+                ?>
+                <h3 class="nav-toggle icon"><a href="#navigation"><?php _e( 'Navigation', 'woothemes' ); ?></a><?php echo $logoBlock ?></h3>
+            <?php
+            }
 
 
             if (isset($GLOBALS['pootlepress_fontawesome_menu'])) {

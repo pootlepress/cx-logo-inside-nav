@@ -141,3 +141,10 @@
     display: none;
   }
 }
+
+.nav-toggle a:last-child
+{
+    position: absolute;
+    padding: 0;
+    border: none;
+}
