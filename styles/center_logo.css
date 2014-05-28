@@ -110,6 +110,10 @@
   float: left;
 }
 
+.topnav_section .nav_section.third ul li li {
+    float: none;
+}
+
 #navigation .cart
 {
     display: none;
