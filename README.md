@@ -13,7 +13,7 @@ Instructions
 
 Versions
 
-v1.1.3 - fix css for the submenu items
+v1.1.3 - fix css for the submenu items, fix logo in mobile view
 
 v1.1.2 - compatibility with Font Awesome Menus Canvas Extension
 
