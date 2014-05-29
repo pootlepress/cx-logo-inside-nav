@@ -13,6 +13,8 @@ Instructions
 
 Versions
 
+v1.1.3 - fix css for the submenu items
+
 v1.1.2 - compatibility with Font Awesome Menus Canvas Extension
 
 v1.1.1 - fix Error on Using Logo Inside Nav. + Sticky Nav #4
