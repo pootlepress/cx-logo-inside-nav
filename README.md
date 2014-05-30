@@ -13,6 +13,8 @@ Instructions
 
 Versions
 
+v1.1.4 - fix logo positioning on some sites
+
 v1.1.3 - fix css for the submenu items, fix logo in mobile view and check for woo_add_options hook
 
 v1.1.2 - compatibility with Font Awesome Menus Canvas Extension
