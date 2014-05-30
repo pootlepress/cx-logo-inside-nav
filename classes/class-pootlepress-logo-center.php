@@ -103,10 +103,9 @@ function generateNav($nav)
 		' . $nav['nav1'] . '
 	</ul>
 </div>
-<div class="nav_section second" style="
-	margin-top:-' .  $logodata['logo_top'] . 'px;
-	margin-left:-' .  $logodata['nav_padding'] . 'px;
-	width:' .  $logodata['w'] . 'px;">
+<div class="nav_section second"
+
+	>
 	' . $logodata['logo_block'] . '
 </div>
 
