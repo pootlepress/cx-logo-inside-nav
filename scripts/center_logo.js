@@ -26,6 +26,7 @@
 
         var leftOffset = (toggleWidth - logoWidth) / 2;
         $(".nav-toggle a:last-child").css('left', leftOffset + 'px');
+        $(".nav-toggle a:last-child").css('top', '56px');
     }
 
 })(jQuery);
