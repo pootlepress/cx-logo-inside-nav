@@ -4,7 +4,7 @@ Canvas Extension - Logo Inside Nav
 A Canvas Extension to center the logo inside the primary nav
 
 
-Watch the demo here: (link tbc)
+Watch the demo here: http://www.pootlepress.com/shop/logo-inside-nav-woothemes-canvas/
 
 Instructions
 
@@ -12,6 +12,8 @@ Instructions
 2. The extension will be turned on automatically, but you can see the option under 'Canvas Extensions' in the Canvas Theme Options
 
 Versions
+
+v1.1.5 - Solve logo width incorrect when page initially in mobile view
 
 v1.1.4 - fix logo positioning on some sites
 
