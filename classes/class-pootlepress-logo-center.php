@@ -200,6 +200,7 @@ class Pootlepress_Center_logo {
 
 		wp_enqueue_style(esc_attr('center_logo'), esc_url(plugins_url('styles/center_logo.css', $this->file)));
 
+        wp_enqueue_script('pootlepress-images-loaded', plugins_url('scripts/imagesloaded.pkgd.min.js', $this->file), array('jquery'));
         wp_enqueue_script('center_logo', plugins_url('scripts/center_logo.js', $this->file), array('jquery'));
 	} 
 
