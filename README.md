@@ -10,6 +10,8 @@ Instructions
 
 1. Install zip file as a plugin (not a theme)
 2. The extension will be turned on automatically, but you can see the option under 'Canvas Extensions' in the Canvas Theme Options
+3. Please note that currently Logo Inside Nav does not work with Top Navigation in Canvas
+
 
 Versions
 
