@@ -15,6 +15,12 @@
             $logo.closest('.nav_section').css('margin-left', marginLeft);
             $logo.closest('.nav_section').css('margin-top', marginTop);
             $logo.closest('.nav_section').css('width', logoWidth + 'px');
+
+            var firstPaddingRight = (Math.ceil(logoWidth / 2)) + 'px';
+            var thirdPaddingLeft = (Math.ceil(logoWidth / 2)) + 'px';
+
+            $('#navigation .nav_section.first').css('padding-right', firstPaddingRight);
+            $('#navigation .nav_section.third').css('padding-left', thirdPaddingLeft);
         });
 
         $(window).resize(function () {

@@ -151,4 +151,5 @@
     position: absolute;
     padding: 0;
     border: none;
+    z-index: 10;
 }
