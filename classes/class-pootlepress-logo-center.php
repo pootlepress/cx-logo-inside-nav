@@ -16,9 +16,11 @@ function getLogoData()
 	$logo_url = $settings['logo'];
 	if ( is_ssl() ) $logo_url = str_replace( 'http://', 'https://', $logo_url );
 
-	$size = getimagesize($logo_url);
-	$w = $size[0];
-	$h = $size[1];
+//	$size = getimagesize($logo_url);
+//	$w = $size[0];
+//	$h = $size[1];
+    $w = 0;
+    $h = 0;
 
 	$nav_mb = ceil($w * 0.7);
 	$nav_padding = ceil($w/2);
