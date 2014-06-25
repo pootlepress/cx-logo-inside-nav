@@ -19,6 +19,7 @@ function getLogoData()
 //	$size = getimagesize($logo_url);
 //	$w = $size[0];
 //	$h = $size[1];
+    $size = array(0 , 0);
     $w = 0;
     $h = 0;
 
@@ -52,32 +53,26 @@ function getLogoData()
 /*Make the array from $nav string then split it (left side always has 1 more item if the sum of them is odd) */
 function parseNavitems($nav)
 {
-  
-    $dom = new DOMDocument;  
-    $dom -> loadHTML($nav);    
-        
-    $xpath = new DOMXPath($dom);    
-  
-    if($xpath -> query('//div/ul/*')->length !== 0)
-    {
-        $tags = $xpath -> query('//div/ul/*');
-        
-        }elseif($xpath -> query('//ul[@id="top-nav"]/*')->length !== 0)
-        {
-            $tags = $xpath -> query('//ul[@id="top-nav"]/*');
-            remove_action('woo_header_after', 'woo_nav', 10);
-            
-            }elseif($xpath -> query('//ul[@id="page-list"]/*')->length !== 0  )
-            {
-               $tags =  $xpath -> query('//ul[@id="page-list"]/*');    
-                }
+    $doc = phpQuery::newDocument($nav);
+    phpQuery::selectDocument($doc);
 
-   
-    if($tags){
-         foreach($tags as $tag){        
-         $arr[] = $tag -> C14N();
-         } 
-   }
+    if (pq('ul.menu')->size() > 0) {
+        $tags = pq('ul.menu > li');
+    } else if (pq('#top-nav')->size() > 0) {
+        $tags = pq('li');
+        remove_action('woo_header_after', 'woo_nav', 10);
+    } else if (pq('#page-list')->size() > 0) {
+        $tags = pq('li');
+    } else {
+        $tags = null;
+    }
+
+    $arr = array();
+    if ($tags) {
+        foreach($tags as $tag) {
+            $arr[] = pq("<div></div>")->append(pq($tag)->clone()) -> html();
+        }
+    }
     
 	if(count($arr) <= 0) return false;
     

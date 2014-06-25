@@ -27,7 +27,9 @@ License: GPL version 2 or later - http://www.gnu.org/licenses/old-licenses/gpl-2
     if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 	require_once( 'pootlepress-logo-center-functions.php' );
+    require_once( 'classes/phpQuery.php');
 	require_once( 'classes/class-pootlepress-logo-center.php' );
+
 
     $GLOBALS['pootlepress_center_logo'] = new Pootlepress_Center_logo( __FILE__ );
     $GLOBALS['pootlepress_center_logo']->version = '1.1.6';
