@@ -160,6 +160,9 @@ class Pootlepress_Center_logo {
 	private $file;
 	private $_menu_style;
 
+    private $enabled;
+    private $hideMobileLogo;
+
 	/**
 	 * Constructor.
 	 * @param string $file The base file of the plugin.
@@ -182,8 +185,12 @@ class Pootlepress_Center_logo {
 		// Lood for a method/function for the selected style and load it.
 		add_action('get_header', array( &$this, 'load_center_logo' ) , 1010); // fontawesome menu is 1000
 
+        add_action('wp_head', array($this, 'option_css'));
+
 		add_action('wp_footer', array(&$this, 'load_scripts'));
 
+        $this->enabled = get_option('pootlepress-center-logo-option', 'true') == 'true';
+        $this->hideMobileLogo = get_option('pootlepress-center-logo-hide-mobile-logo', 'false') == 'true';
 
 	} // End __construct()
 
@@ -226,6 +233,13 @@ class Pootlepress_Center_logo {
 				'std' => 'true',
 				'type' => 'checkbox'
 				);
+        $o[] = array(
+            'id' => 'pootlepress-center-logo-hide-mobile-logo',
+            'name' => __( 'Hide Logo in Mobile View', 'pootlepress-center-logo' ),
+            'desc' => __( 'Hide Logo in Mobile View', 'pootlepress-center-logo' ),
+            'std' => 'false',
+            'type' => 'checkbox'
+        );
         /*$o[] = array(
 				'id' => 'pootlepress-site-title-option', 
 				'name' => __( 'Turn on Site Title', 'pootlepress-site-title' ), 
@@ -283,6 +297,15 @@ class Pootlepress_Center_logo {
 		}
 	} // End register_plugin_version()
 
+    public function option_css() {
+        if ($this->enabled) {
+            if ($this->hideMobileLogo) {
+                $css = '';
+                $css .= "#inner-wrapper .nav-toggle img { display: none; }\n";
+                echo "<style>\n" . $css . "</style>\n";
+            }
+        }
+    }
 
 	/**
 	 * Load the right align files
