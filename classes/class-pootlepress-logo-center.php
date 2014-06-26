@@ -299,11 +299,19 @@ class Pootlepress_Center_logo {
 
     public function option_css() {
         if ($this->enabled) {
+            $css = '';
             if ($this->hideMobileLogo) {
-                $css = '';
                 $css .= "#inner-wrapper .nav-toggle img { display: none; }\n";
-                echo "<style>\n" . $css . "</style>\n";
             }
+
+            global $woo_options;
+            $nav_divider_border = $woo_options['woo_nav_divider_border'];
+            if ( $nav_divider_border && $nav_divider_border["width"] >= 0 ) {
+                $css .= '#navigation .nav_section.first ul.nav > li:last-child  { border-left: '.$nav_divider_border["width"].'px '.$nav_divider_border["style"].' '.$nav_divider_border["color"].'; }';
+                $css .= '#navigation .nav_section.third ul.nav > li:first-child  { border-left: '.$nav_divider_border["width"].'px '.$nav_divider_border["style"].' '.$nav_divider_border["color"].'; }';
+            }
+
+            echo "<style>\n" . $css . "</style>\n";
         }
     }
 
