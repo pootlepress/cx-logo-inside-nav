@@ -2,6 +2,7 @@
 
     $(document).ready(function () {
 
+        // hide it when page is still loading, so logo is not jumpy
         var $logo = $('#navigation .nav_section.second img');
         $logo.css('visibility', 'hidden');
 
