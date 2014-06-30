@@ -2,9 +2,12 @@
 
     $(document).ready(function () {
 
+        var $logo = $('#navigation .nav_section.second img');
+        $logo.css('visibility', 'hidden');
 
         imagesLoaded( '#navigation .nav_section.second img', function() {
             var $logo = $('#navigation .nav_section.second img');
+
             var logoWidth = $logo.get(0).width;
             var logoHeight = $logo.get(0).height;
             console.log('Logo width: ' + logoWidth);
@@ -21,6 +24,9 @@
 
             $('#navigation .nav_section.first').css('padding-right', firstPaddingRight);
             $('#navigation .nav_section.third').css('padding-left', thirdPaddingLeft);
+
+            $logo.css('visibility', '');
+
         });
 
         $(window).resize(function () {
