@@ -15,6 +15,8 @@ Instructions
 
 Versions
 
+v1.1.8 - made logo not jumpy
+
 v1.1.7 - Fix unicode problem + update image function
 
 v1.1.6 - Fix padding on first and third section, make logo appear front
