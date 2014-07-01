@@ -2,33 +2,53 @@
 
     $(document).ready(function () {
 
-        // hide it when page is still loading, so logo is not jumpy
-        var $logo = $('#navigation .nav_section.second img');
-        $logo.css('visibility', 'hidden');
+        var $navContainer = null;
+        var selector = '';
+        if ($('#navigation').length > 0) {
+            $navContainer = $('#navigation');
+            selector = '#navigation';
+        } else if ($('.topnav_section').length > 0) {
+            $navContainer = $('.topnav_section');
+            selector = '.topnav_section';
+        }
 
-        imagesLoaded( '#navigation .nav_section.second img', function() {
-            var $logo = $('#navigation .nav_section.second img');
+        if ($navContainer != null) {
+            // hide it when page is still loading, so logo is not jumpy
+            var $logo = $navContainer.find('.nav_section.second img');
+            $logo.css('visibility', 'hidden');
 
-            var logoWidth = $logo.get(0).width;
-            var logoHeight = $logo.get(0).height;
-            console.log('Logo width: ' + logoWidth);
-            console.log('Logo height: ' + logoHeight);
-            var marginLeft = (-Math.ceil(logoWidth / 2)) + 'px';
-            var marginTop = (-Math.ceil(logoHeight / 2)) + 'px';
+            imagesLoaded( selector + ' .nav_section.second img', function() {
+                var $logo = $navContainer.find('.nav_section.second img');
 
-            $logo.closest('.nav_section').css('margin-left', marginLeft);
-            $logo.closest('.nav_section').css('margin-top', marginTop);
-            $logo.closest('.nav_section').css('width', logoWidth + 'px');
+                var logoWidth = $logo.get(0).width;
+                var logoHeight = $logo.get(0).height;
+                console.log('Logo width: ' + logoWidth);
+                console.log('Logo height: ' + logoHeight);
+                var marginLeft = (-Math.ceil(logoWidth / 2)) + 'px';
+                var marginTop = (-Math.ceil(logoHeight / 2)) + 'px';
 
-            var firstPaddingRight = (Math.ceil(logoWidth / 2)) + 'px';
-            var thirdPaddingLeft = (Math.ceil(logoWidth / 2)) + 'px';
+                $logo.closest('.nav_section').css('margin-left', marginLeft);
+                if (selector == '#navigation') {
+                    $logo.closest('.nav_section').css('margin-top', marginTop);
+                } else {
+                    $logo.closest('.nav_section').css('top', '0');
+                }
 
-            $('#navigation .nav_section.first').css('padding-right', firstPaddingRight);
-            $('#navigation .nav_section.third').css('padding-left', thirdPaddingLeft);
+                $logo.closest('.nav_section').css('width', logoWidth + 'px');
 
-            $logo.css('visibility', '');
+                var firstPaddingRight = (Math.ceil(logoWidth / 2)) + 'px';
+                var thirdPaddingLeft = (Math.ceil(logoWidth / 2)) + 'px';
 
-        });
+                $navContainer.find('.nav_section.first').css('padding-right', firstPaddingRight);
+                $navContainer.find('.nav_section.third').css('padding-left', thirdPaddingLeft);
+
+                $logo.css('visibility', '');
+
+            });
+        }
+
+
+
 
         $(window).resize(function () {
             positionMobileLogo();
