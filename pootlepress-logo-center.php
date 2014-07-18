@@ -29,9 +29,21 @@ License: GPL version 2 or later - http://www.gnu.org/licenses/old-licenses/gpl-2
 	require_once( 'pootlepress-logo-center-functions.php' );
     require_once( 'classes/phpQuery.php');
 	require_once( 'classes/class-pootlepress-logo-center.php' );
-
+    require_once( 'classes/class-pootlepress-updater.php');
 
     $GLOBALS['pootlepress_center_logo'] = new Pootlepress_Center_logo( __FILE__ );
     $GLOBALS['pootlepress_center_logo']->version = '1.1.8';
-	
+
+add_action('init', 'pp_lin_updater');
+function pp_lin_updater()
+{
+    if (!function_exists('get_plugin_data')) {
+        include(ABSPATH . 'wp-admin/includes/plugin.php');
+    }
+    $data = get_plugin_data(__FILE__);
+    $wptuts_plugin_current_version = $data['Version'];
+    $wptuts_plugin_remote_path = 'http://www.pootlepress.com/?updater=1';
+    $wptuts_plugin_slug = plugin_basename(__FILE__);
+    new Pootlepress_Updater ($wptuts_plugin_current_version, $wptuts_plugin_remote_path, $wptuts_plugin_slug);
+}
 ?>
