@@ -15,6 +15,8 @@ Instructions
 
 Versions
 
+v1.2 - ability to update within WordPress
+
 v1.1.8 - made logo not jumpy
 
 v1.1.7 - Fix unicode problem + update image function
