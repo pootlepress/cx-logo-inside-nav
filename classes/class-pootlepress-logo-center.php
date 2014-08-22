@@ -344,20 +344,20 @@ class Pootlepress_Center_logo {
             if (isset($GLOBALS['pootlepress_fontawesome_menu'])) {
                 $fontAwesomePlugin = $GLOBALS['pootlepress_fontawesome_menu'];
 
-                remove_action('woo_header_after','woo_nav', 10);
-                remove_action('woo_header_inside','woo_logo', 10);
+                remove_action('woo_header_after', 'woo_nav', 10);
+                remove_action('woo_header_inside', 'woo_logo', 10);
 
 //                add_action( 'woo_nav_inside', array(&$this, 'woo_nav_custom'), 10 );
 //                add_action('woo_top', array($this, 'woo_top_navigation_custom'), 10);
 
-                remove_action( 'woo_nav_inside',array($fontAwesomePlugin, 'woo_nav_custom'));
-                remove_action( 'woo_top', array($fontAwesomePlugin, 'woo_top_navigation_custom'));
+                remove_action('woo_nav_inside', array($fontAwesomePlugin, 'woo_nav_custom'));
+                remove_action('woo_top', array($fontAwesomePlugin, 'woo_top_navigation_custom'));
 
                 add_action('woo_header_after', 'woo_nav', 10);
                 add_action('woo_nav_inside', 'woo_nav_new');
                 add_action('woo_top', 'woo_nav_new_top');
 
-                if($_isTitleOn == 'true'){
+                if ($_isTitleOn == 'true') {
                     add_action('woo_header_inside', 'getMainTitle', 10);
                 }
 
@@ -365,18 +365,18 @@ class Pootlepress_Center_logo {
                 function woo_nav_new_top()
                 {
 
-                    if ( function_exists( 'has_nav_menu' ) && has_nav_menu( 'top-menu' ) ) {
+                    if (function_exists('has_nav_menu') && has_nav_menu('top-menu')) {
                         ?>
                         <div id="top">
                             <div class="col-full">
                                 <?php
-                                echo '<h3 class="top-menu">' . woo_get_menu_name( 'top-menu' ) . '</h3>';
-                                $getnav = wp_nav_menu( array( 'depth' => 6, 'sort_column' => 'menu_order',
+                                echo '<h3 class="top-menu">' . woo_get_menu_name('top-menu') . '</h3>';
+                                $getnav = wp_nav_menu(array('depth' => 6, 'sort_column' => 'menu_order',
                                     'container' => 'ul', 'menu_id' => 'top-nav', 'menu_class' => 'nav top-navigation fl',
-                                    'theme_location' => 'top-menu', 'echo'=>false,
+                                    'theme_location' => 'top-menu', 'echo' => false,
                                     'link_before' => '<span>', 'link_after' => '</span>',
                                     'walker' => new Pootlepress_FA_Top_Nav_Walker()
-                                ) );
+                                ));
                                 $nav = generateNav($getnav);
                                 echo $nav;
                                 ?>
@@ -392,29 +392,29 @@ class Pootlepress_Center_logo {
                 {
 
 
-                    if ( function_exists( 'has_nav_menu' ) && has_nav_menu( 'primary-menu' ) ) {
+                    if (function_exists('has_nav_menu') && has_nav_menu('primary-menu')) {
 
-                        echo '<h3>' . woo_get_menu_name( 'primary-menu' ) . '</h3>';
+                        echo '<h3>' . woo_get_menu_name('primary-menu') . '</h3>';
 
-                        $getnav =  wp_nav_menu(array('theme_location'=>'primary-menu', 'echo'=>false, 'link_before' => '<span>', 'link_after' => '</span>',
-                            'walker' => new Pootlepress_FA_Main_Nav_Walker() ));
+                        $getnav = wp_nav_menu(array('theme_location' => 'primary-menu', 'echo' => false, 'link_before' => '<span>', 'link_after' => '</span>',
+                            'walker' => new Pootlepress_FA_Main_Nav_Walker()));
                         $nav = generateNav($getnav);
                         echo $nav;
 
                     } else {
 
-                        if ( get_option( 'woo_custom_nav_menu' ) == 'true' ) {
+                        if (get_option('woo_custom_nav_menu') == 'true') {
 
-                            if ( function_exists( 'woo_custom_navigation_output' ) ) {
-                                woo_custom_navigation_output( 'name=Woo Menu 1' );
+                            if (function_exists('woo_custom_navigation_output')) {
+                                woo_custom_navigation_output('name=Woo Menu 1');
                             }
-                        } elseif(function_exists( 'has_nav_menu' ) && has_nav_menu( 'top-menu' ) ) {
+                        } elseif (function_exists('has_nav_menu') && has_nav_menu('top-menu')) {
                             //
                             // top navigation active
                             //
-                        }else{
+                        } else {
 
-                            $getnav = wp_list_pages( 'depth=6&title_li=&exclude=&echo=0' );
+                            $getnav = wp_list_pages('depth=6&title_li=&exclude=&echo=0');
                             $getnav = '<ul id="page-list">' . $getnav . '</ul>';
                             $nav = generateNav($getnav);
                             echo $nav;
@@ -423,6 +423,83 @@ class Pootlepress_Center_logo {
                     }
 
                 }
+            } else if (isset($GLOBALS['pootlepress_horizontal_submenu'])) {
+
+                $horizontalSubMenuPlugin = $GLOBALS['pootlepress_horizontal_submenu'];
+
+                remove_action('woo_header_after', 'woo_nav', 10);
+                remove_action('woo_header_inside', 'woo_logo', 10);
+
+                // added by horizontal submenu
+                remove_action( 'woo_nav_inside', array($horizontalSubMenuPlugin, 'woo_nav_custom'), 10 );
+
+                add_action('woo_header_after', 'woo_nav', 10);
+                add_action('woo_nav_inside', 'woo_nav_new');
+                add_action('woo_top', 'woo_nav_new_top');
+
+
+                function woo_nav_new_top()
+                {
+
+                    if (function_exists('has_nav_menu') && has_nav_menu('top-menu')) {
+                        ?>
+                        <div id="top">
+                            <div class="col-full">
+                                <?php
+                                echo '<h3 class="top-menu">' . woo_get_menu_name('top-menu') . '</h3>';
+                                $getnav = wp_nav_menu(array('depth' => 6, 'sort_column' => 'menu_order',
+                                    'container' => 'ul', 'menu_id' => 'top-nav', 'menu_class' => 'nav top-navigation fl',
+                                    'theme_location' => 'top-menu', 'echo' => false,
+                                    'link_before' => '<span>', 'link_after' => '</span>',
+                                    'walker' => new Pootlepress_Horizontal_Submenu_Nav_Walker()
+                                ));
+                                $nav = generateNav($getnav);
+                                echo $nav;
+                                ?>
+                            </div>
+                        </div>
+                    <?php
+
+                    }
+
+                }
+
+                function woo_nav_new()
+                {
+
+
+                    if (function_exists('has_nav_menu') && has_nav_menu('primary-menu')) {
+
+                        echo '<h3>' . woo_get_menu_name('primary-menu') . '</h3>';
+
+                        $getnav = wp_nav_menu(array('theme_location' => 'primary-menu', 'echo' => false, 'link_before' => '<span>', 'link_after' => '</span>',
+                            'walker' => new Pootlepress_Horizontal_Submenu_Nav_Walker()));
+                        $nav = generateNav($getnav);
+                        echo $nav;
+
+                    } else {
+
+                        if (get_option('woo_custom_nav_menu') == 'true') {
+
+                            if (function_exists('woo_custom_navigation_output')) {
+                                woo_custom_navigation_output('name=Woo Menu 1');
+                            }
+                        } elseif (function_exists('has_nav_menu') && has_nav_menu('top-menu')) {
+                            //
+                            // top navigation active
+                            //
+                        } else {
+
+                            $getnav = wp_list_pages('depth=6&title_li=&exclude=&echo=0');
+                            $getnav = '<ul id="page-list">' . $getnav . '</ul>';
+                            $nav = generateNav($getnav);
+                            echo $nav;
+
+                        }
+                    }
+
+                }
+
             } else {
                 remove_action('woo_header_after','woo_nav', 10);
                 remove_action('woo_header_inside','woo_logo', 10);
