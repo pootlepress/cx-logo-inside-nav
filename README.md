@@ -15,6 +15,8 @@ Instructions
 
 Versions
 
+1.2.1 - compatibility with horizontal sub menu extension
+
 v1.2 - ability to update within WordPress
 
 v1.1.8 - made logo not jumpy
