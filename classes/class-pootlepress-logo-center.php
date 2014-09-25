@@ -76,7 +76,7 @@ function parseNavitems($nav)
     
 	if(count($arr) <= 0) return false;
     
-   $navs1 = array_reverse(array_slice($arr, 0, ceil(count($arr)/2)));
+   $navs1 = array_slice($arr, 0, ceil(count($arr)/2)); // do not reverse or else order will be wrong in mobile view
    
 	$navs2 = array_splice($arr, ceil(count($arr)/2));
 

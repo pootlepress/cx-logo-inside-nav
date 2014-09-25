@@ -94,10 +94,14 @@
 }
 .topnav_section .nav_section.first > div,
 .topnav_section .nav_section.first > ul {
-  float: right;
+  float: none;
+  text-align: right;
 }
 .topnav_section .nav_section.first ul li {
-  float: right;
+  float: none;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
 }
 .topnav_section .nav_section.first ul li li {
   float: none;
@@ -136,14 +140,18 @@
   .topnav_section .nav_section.third ul {
     float: none;
     margin: 0;
+    text-align: left;
   }
   .topnav_section .nav_section.first ul li,
   .topnav_section .nav_section.third ul li {
     float: none;
+    display: block;
+    text-align: left;
   }
   .topnav_section div.nav_section.second {
     display: none;
   }
+
 }
 
 .nav-toggle a:last-child
