@@ -15,6 +15,10 @@ Instructions
 
 Versions
 
+04.10.2014 - Version 1.2.2
+ * Fix - mobile menu order of top and primary navs
+ * Fix - php error message
+
 1.2.1 - compatibility with horizontal sub menu extension
 
 v1.2 - ability to update within WordPress
