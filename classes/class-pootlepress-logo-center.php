@@ -220,13 +220,14 @@ class Pootlepress_Center_logo {
 				'name' => 'Logo Inside Nav', 
 				'type' => 'subheading'
 				);
-		$o[] = array(
-				'name' => 'Top Menu',
-				'desc' => '',
-				'id' => 'pootlepress-center-logo-notice',
-				'std' => sprintf(("Please note the Logo Inside Nav Canvas Extension will not show if there is a Top Navigation selected. For support please email support@pootlepress.com. Find more plugins here <a href=\"%s\" target=\"_blank\">http://www.pootlepress.com/shop</a>" ), "http://www.pootlepress.com/shop" ),
-				'type' => 'info'
-				);
+        // remove this message
+//		$o[] = array(
+//				'name' => 'Top Menu',
+//				'desc' => '',
+//				'id' => 'pootlepress-center-logo-notice',
+//				'std' => sprintf(("Please note the Logo Inside Nav Canvas Extension will not show if there is a Top Navigation selected. For support please email support@pootlepress.com. Find more plugins here <a href=\"%s\" target=\"_blank\">http://www.pootlepress.com/shop</a>" ), "http://www.pootlepress.com/shop" ),
+//				'type' => 'info'
+//				);
 		$o[] = array(
 				'id' => 'pootlepress-center-logo-option', 
 				'name' => __( 'Logo Inside Nav', 'pootlepress-center-logo' ), 
