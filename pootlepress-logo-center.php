@@ -29,6 +29,7 @@ License: GPL version 2 or later - http://www.gnu.org/licenses/old-licenses/gpl-2
 	require_once( 'pootlepress-logo-center-functions.php' );
     require_once( 'classes/phpQuery.php');
 	require_once( 'classes/class-pootlepress-logo-center.php' );
+    require_once( 'classes/class-pootlepress-canvas-options.php' );
     require_once( 'classes/class-pootlepress-updater.php');
 
     $GLOBALS['pootlepress_center_logo'] = new Pootlepress_Center_logo( __FILE__ );

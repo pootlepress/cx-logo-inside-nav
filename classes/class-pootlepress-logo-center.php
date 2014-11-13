@@ -174,14 +174,14 @@ class Pootlepress_Center_logo {
 	public function __construct ( $file ) {
 		$this->file = $file;
 		$this->load_plugin_textdomain();
-		add_action( 'init','check_main_heading', 0 );
+
 		add_action( 'init', array( &$this, 'load_localisation' ), 0 );
 
 		// Run this on activation.
 		register_activation_hook( $file, array( &$this, 'activation' ) );
 
 		// Add the custom theme options.
-		add_filter( 'option_woo_template', array( &$this, 'add_theme_options' ) );
+		$this->add_theme_options();
 
 		// Lood for a method/function for the selected style and load it.
 		add_action('get_header', array( &$this, 'load_center_logo' ) , 1010); // fontawesome menu is 1000
@@ -215,9 +215,16 @@ class Pootlepress_Center_logo {
 	 * @since  1.0.0
 	 * @param array $o The array of options, as stored in the database.
 	 */	
-	public function add_theme_options ( $o ) {
+	public function add_theme_options () {
+        $o = array();
+
+        $o[] = array(
+            'name' => 'Logo Inside Nav',
+            'type' => 'heading'
+        );
+
 		$o[] = array(
-				'name' => 'Logo Inside Nav', 
+				'name' => 'Logo Inside Nav Settings',
 				'type' => 'subheading'
 				);
         // remove this message
@@ -249,7 +256,12 @@ class Pootlepress_Center_logo {
 				'std' => 'false',
 				'type' => 'checkbox'
 				);*/
-		return $o;
+
+        $afterName = 'Map Callout Text';
+        $afterType = 'textarea';
+
+        global $PCO;
+        $PCO->add_options($afterName, $afterType, $o);
 	} // End add_theme_options()
 	
 	/**
