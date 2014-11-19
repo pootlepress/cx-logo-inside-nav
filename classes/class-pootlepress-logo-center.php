@@ -60,7 +60,7 @@ function parseNavitems($nav)
         $tags = pq('ul.menu > li');
     } else if (pq('#top-nav')->size() > 0) {
         $tags = pq('li');
-        remove_action('woo_header_after', 'woo_nav', 10);
+        //remove_action('woo_header_after', 'woo_nav', 10);
     } else if (pq('#page-list')->size() > 0) {
         $tags = pq('li');
     } else {
@@ -164,6 +164,8 @@ class Pootlepress_Center_logo {
     private $enabled;
     private $hideMobileLogo;
 
+    private $applyToTop;
+
 	/**
 	 * Constructor.
 	 * @param string $file The base file of the plugin.
@@ -193,6 +195,7 @@ class Pootlepress_Center_logo {
         $this->enabled = get_option('pootlepress-center-logo-option', 'true') == 'true';
         $this->hideMobileLogo = get_option('pootlepress-center-logo-hide-mobile-logo', 'false') == 'true';
 
+        $this->applyToTop = false;
 	} // End __construct()
 
 	function load_scripts()
@@ -515,75 +518,19 @@ class Pootlepress_Center_logo {
                 }
 
             } else {
-                remove_action('woo_header_after','woo_nav', 10);
+//                remove_action('woo_header_after','woo_nav', 10);
                 remove_action('woo_header_inside','woo_logo', 10);
                 remove_action( 'woo_nav_inside','woo_nav_primary', 10 );
                 remove_action( 'woo_top','woo_top_navigation', 10 );
 
                 add_action('woo_header_after', 'woo_nav', 10);
-                add_action('woo_nav_inside', 'woo_nav_new');
-                add_action('woo_top', 'woo_nav_new_top');
+                add_action('woo_nav_inside', array($this, 'woo_nav_new'));
+                add_action('woo_top', array($this, 'woo_nav_new_top'));
 
                 if($_isTitleOn == 'true'){
                     add_action('woo_header_inside', 'getMainTitle', 10);
                 }
 
-
-                function woo_nav_new_top()
-                {
-
-                    if ( function_exists( 'has_nav_menu' ) && has_nav_menu( 'top-menu' ) ) {
-                        ?>
-                        <div id="top">
-                            <div class="col-full">
-                                <?php
-                                echo '<h3 class="top-menu">' . woo_get_menu_name( 'top-menu' ) . '</h3>';
-                                $getnav = wp_nav_menu( array( 'depth' => 6, 'sort_column' => 'menu_order', 'container' => 'ul', 'menu_id' => 'top-nav', 'menu_class' => 'nav top-navigation fl', 'theme_location' => 'top-menu', 'echo'=>false ) );
-                                $nav = generateNav($getnav);
-                                echo $nav;
-                                ?>
-                            </div>
-                        </div>
-                    <?php
-
-                    }
-
-                }
-
-                function woo_nav_new()
-                {
-
-
-                    if ( function_exists( 'has_nav_menu' ) && has_nav_menu( 'primary-menu' ) ) {
-
-                        echo '<h3>' . woo_get_menu_name( 'primary-menu' ) . '</h3>';
-
-                        $getnav =  wp_nav_menu(array('theme_location'=>'primary-menu', 'echo'=>false));
-                        $nav = generateNav($getnav);
-                        echo $nav;
-
-                    } else {
-
-                        if ( get_option( 'woo_custom_nav_menu' ) == 'true' ) {
-
-                            if ( function_exists( 'woo_custom_navigation_output' ) ) {
-                                woo_custom_navigation_output( 'name=Woo Menu 1' );
-                            }
-                        } elseif(function_exists( 'has_nav_menu' ) && has_nav_menu( 'top-menu' ) ) {
-                            //
-                            // top navigation active
-                            //
-                        }else{
-
-                            $getnav = wp_list_pages( 'depth=6&title_li=&exclude=&echo=0' );
-                            $getnav = '<ul id="page-list">' . $getnav . '</ul>';
-                            $nav = generateNav($getnav);
-                            echo $nav;
-
-                        }
-                    }
-
-                }
             }
 
 
@@ -593,6 +540,67 @@ class Pootlepress_Center_logo {
 			}
 		}
 	} // End load_align_right()
-	
+
+    public function woo_nav_new_top()
+    {
+
+        if ( function_exists( 'has_nav_menu' ) && has_nav_menu( 'top-menu' ) ) {
+            ?>
+            <div id="top">
+                <div class="col-full">
+                    <?php
+                    echo '<h3 class="top-menu">' . woo_get_menu_name( 'top-menu' ) . '</h3>';
+                    $getnav = wp_nav_menu( array( 'depth' => 6, 'sort_column' => 'menu_order', 'container' => 'ul', 'menu_id' => 'top-nav', 'menu_class' => 'nav top-navigation fl', 'theme_location' => 'top-menu', 'echo'=>false ) );
+                    $nav = generateNav($getnav);
+                    echo $nav;
+
+                    $this->applyToTop = true;
+
+                    // apply to top, so use normal primary nav
+                    remove_action('woo_nav_inside', array($this, 'woo_nav_new'), 10);
+                    add_action( 'woo_nav_inside','woo_nav_primary', 10 );
+                    ?>
+                </div>
+            </div>
+        <?php
+
+        }
+
+    }
+
+    public function woo_nav_new()
+    {
+
+
+        if ( function_exists( 'has_nav_menu' ) && has_nav_menu( 'primary-menu' ) ) {
+
+            echo '<h3>' . woo_get_menu_name( 'primary-menu' ) . '</h3>';
+
+            $getnav =  wp_nav_menu(array('theme_location'=>'primary-menu', 'echo'=>false));
+            $nav = generateNav($getnav);
+            echo $nav;
+
+        } else {
+
+            if ( get_option( 'woo_custom_nav_menu' ) == 'true' ) {
+
+                if ( function_exists( 'woo_custom_navigation_output' ) ) {
+                    woo_custom_navigation_output( 'name=Woo Menu 1' );
+                }
+            } elseif(function_exists( 'has_nav_menu' ) && has_nav_menu( 'top-menu' ) ) {
+                //
+                // top navigation active
+                //
+            }else{
+
+                $getnav = wp_list_pages( 'depth=6&title_li=&exclude=&echo=0' );
+                $getnav = '<ul id="page-list">' . $getnav . '</ul>';
+                $nav = generateNav($getnav);
+                echo $nav;
+
+            }
+        }
+
+    }
 
 } // End Class

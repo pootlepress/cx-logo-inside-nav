@@ -4,12 +4,12 @@
 
         var $navContainer = null;
         var selector = '';
-        if ($('#navigation').length > 0) {
-            $navContainer = $('#navigation');
-            selector = '#navigation';
-        } else if ($('.topnav_section').length > 0) {
+       if ($('.topnav_section').length > 0) {
             $navContainer = $('.topnav_section');
             selector = '.topnav_section';
+        } else if ($('#navigation').length > 0) {
+            $navContainer = $('#navigation');
+            selector = '#navigation';
         }
 
         if ($navContainer != null) {
@@ -28,7 +28,7 @@
                 var marginTop = (-Math.ceil(logoHeight / 2)) + 'px';
 
                 $logo.closest('.nav_section').css('margin-left', marginLeft);
-                if (selector == '#navigation') {
+                if ($('#top').length == 0) {
                     $logo.closest('.nav_section').css('margin-top', marginTop);
                 } else {
                     $logo.closest('.nav_section').css('top', '0');
