@@ -15,6 +15,12 @@ Instructions
 
 Versions
 
+27.11.2013 - Version 1.3 
+ * New - now works with Top Nav and primary nav remains
+ * Tweak - remove notification about top nav
+ * Tweak - new add option method for option heading in Canvas dashboard
+ * Fix - error messages and styling issues
+
 1.2.2 - Fix mobile menu order of top and primary navs / fix php error message
 
 1.2.1 - compatibility with horizontal sub menu extension
