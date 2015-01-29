@@ -356,9 +356,30 @@ class Pootlepress_Center_logo {
             function woo_nav_toggle_custom () {
                 $logo = getLogoData();
                 $logoBlock = $logo['logo_block'];
-                ?>
-                <h3 class="nav-toggle icon"><a href="#navigation"><?php _e( 'Navigation', 'woothemes' ); ?></a><?php echo $logoBlock ?></h3>
-            <?php
+
+                if (isset($GLOBALS['pootlepress_mobile_menu_manager'])) {
+                    // Mobile Menu Manager uses its own woo_nav_toggle, which is removed from action above
+                    // so in here, put nav toggle that for MMM, but also with $logoBlock
+                    $logo = get_option('pootlepress-mmm-nav-toggle-logo', '');
+                    $image = "";
+                    if ($logo != '') {
+                        $image = "<img src='" . esc_attr($logo) . "' />";
+                    }
+
+                    $navIconClass = get_option('pootlepress-mmm-nav-toggle-icon', 'fa-align-justify');
+                    $navText = get_option('pootlepress-mmm-nav-word-text', 'Navigation');
+
+                    $s = ($image == '' ? esc_html($navText) : $image);
+                    ?>
+                    <h3 class="nav-toggle icon"><i class="fa <?php esc_attr_e($navIconClass) ?>"></i><a href="#navigation"><?php echo $s; ?></a><?php echo $logoBlock ?></h3>
+                    <?php
+                } else {
+                    ?>
+                    <h3 class="nav-toggle icon"><a href="#navigation"><?php _e( 'Navigation', 'woothemes' ); ?></a><?php echo $logoBlock ?></h3>
+                <?php
+                }
+
+
             }
 
 
