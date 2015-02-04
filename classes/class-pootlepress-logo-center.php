@@ -332,6 +332,15 @@ class Pootlepress_Center_logo {
                 $css .= '#navigation .nav_section.third ul.nav > li:first-child  { border-left: '.$nav_divider_border["width"].'px '.$nav_divider_border["style"].' '.$nav_divider_border["color"].'; }';
             }
 
+
+            $settings = array( 'header_cart_link' => 'false', 'nav_rss' => 'false', 'header_cart_total' => 'false' );
+            $settings = woo_get_dynamic_values( $settings );
+            if ( is_woocommerce_activated() && 'true' == $settings['header_cart_link'] ) {
+                $css .= '#navigation .topnav_section { margin-right: 42px; }';
+                $css .= '#navigation .side-nav { position: absolute; top: 0; right: 0; }';
+                $css .= '#navigation .side-nav > .cart { display: block; }';
+            }
+
             echo "<style>\n" . $css . "</style>\n";
         }
     }
