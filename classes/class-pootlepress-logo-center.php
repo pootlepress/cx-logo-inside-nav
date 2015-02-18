@@ -71,11 +71,11 @@ function parseNavitems($nav)
     if ($tags) {
         foreach($tags as $tag) {
             // Fix warning about element with the id already exists
-            $id = pq($tag)->attr('id');
-            pq('#' . $id)->removeAttr('id');
-            pq($tag)->removeAttr('id');
+//            $id = pq($tag)->attr('id');
+//            pq('#' . $id)->removeAttr('id');
+//            pq($tag)->removeAttr('id');
 
-            $arr[] = pq("<div></div>")->append(pq($tag)->clone()) -> html();
+            $arr[] = pq("<div></div>")->append(pq($tag)) -> html();
         }
     }
     
