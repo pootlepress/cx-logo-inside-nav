@@ -97,24 +97,24 @@
   float: none;
   text-align: right;
 }
-.topnav_section .nav_section.first ul li {
+.topnav_section .nav_section.first > ul > li {
   float: none;
   display: inline-block;
   vertical-align: middle;
   text-align: left;
 }
-.topnav_section .nav_section.first ul li li {
+.topnav_section .nav_section.first > ul > li li {
   float: none;
 }
 .topnav_section .nav_section.third > div,
 .topnav_section .nav_section.third > ul {
   float: left;
 }
-.topnav_section .nav_section.third ul li {
+.topnav_section .nav_section.third > ul > li {
   float: left;
 }
 
-.topnav_section .nav_section.third ul li li {
+.topnav_section .nav_section.third > ul > li li {
     float: none;
 }
 
@@ -136,14 +136,14 @@
     width: auto;
     padding: 0 !important;
   }
-  .topnav_section .nav_section.first ul,
-  .topnav_section .nav_section.third ul {
+  .topnav_section .nav_section.first > ul,
+  .topnav_section .nav_section.third > ul {
     float: none;
     margin: 0 !important;
     text-align: left;
   }
-  .topnav_section .nav_section.first ul li,
-  .topnav_section .nav_section.third ul li {
+  .topnav_section .nav_section.first > ul > li,
+  .topnav_section .nav_section.third > ul > li {
     float: none;
     display: block;
     text-align: left;
