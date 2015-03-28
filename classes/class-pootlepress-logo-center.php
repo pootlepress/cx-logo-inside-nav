@@ -324,7 +324,7 @@ class Pootlepress_Center_logo {
 
             $nav_divider_border = isset($woo_options['woo_nav_divider_border']) ? $woo_options['woo_nav_divider_border'] : false;
             if ( $nav_divider_border && $nav_divider_border["width"] >= 0 ) {
-                $css .= '#navigation .nav_section.first ul.nav > li:last-child  { border-left: '.$nav_divider_border["width"].'px '.$nav_divider_border["style"].' '.$nav_divider_border["color"].'; }';
+                $css .= '#navigation .nav_section.first ul.nav > li:first-child  { border-left: '.$nav_divider_border["width"].'px '.$nav_divider_border["style"].' '.$nav_divider_border["color"].'; }';
                 $css .= '#navigation .nav_section.third ul.nav > li:first-child  { border-left: '.$nav_divider_border["width"].'px '.$nav_divider_border["style"].' '.$nav_divider_border["color"].'; }';
             }
 
