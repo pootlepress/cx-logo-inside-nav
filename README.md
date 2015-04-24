@@ -16,12 +16,11 @@ Instructions
 Versions
 
 24.04.2015 - Version 1.4
+ * Tweak - remove clone warning error
  * Fix - compatibility issue with Mobile Menu Manager
  * Fix - cart icon
  * Fix - issue when in mobile view
- * Tweak - remove clone warning error
  * Fix - menu divider inconsistency 
-
 
 27.11.2013 - Version 1.3 
  * New - now works with Top Nav and primary nav remains
