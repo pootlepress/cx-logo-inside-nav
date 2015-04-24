@@ -3,7 +3,7 @@
 Plugin Name: Canvas Extension - Logo Inside Nav
 Plugin URI: http://pootlepress.com/canvas-extensions/
 Description: An extension for WooThemes Canvas that puts the logo in the center of the primary navigation.
-Version: 1.3
+Version: 1.4
 Author: PootlePress
 Author URI: http://pootlepress.com/
 License: GPL version 2 or later - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -33,7 +33,7 @@ License: GPL version 2 or later - http://www.gnu.org/licenses/old-licenses/gpl-2
     require_once( 'classes/class-pootlepress-updater.php');
 
     $GLOBALS['pootlepress_center_logo'] = new Pootlepress_Center_logo( __FILE__ );
-    $GLOBALS['pootlepress_center_logo']->version = '1.3';
+    $GLOBALS['pootlepress_center_logo']->version = '1.4';
 
 add_action('init', 'pp_lin_updater');
 function pp_lin_updater()
