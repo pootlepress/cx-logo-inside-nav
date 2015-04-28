@@ -27,11 +27,11 @@
                 var marginLeft = (-Math.ceil(logoWidth / 2)) + 'px';
                 var marginTop = (-Math.ceil(logoHeight / 2)) + 'px';
 
-                $logo.closest('.nav_section').css('margin-left', marginLeft);
+                //$logo.closest('.nav_section').css('margin-left', marginLeft);
                 if ($('#top').length == 0) {
-                    $logo.closest('.nav_section').css('margin-top', marginTop);
+                    //$logo.closest('.nav_section').css('margin-top', marginTop);
                 } else {
-                    $logo.closest('.nav_section').css('top', '0');
+                    //$logo.closest('.nav_section').css('top', '0');
                 }
 
                 $logo.closest('.nav_section').css('width', logoWidth + 'px');

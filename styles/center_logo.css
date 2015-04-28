@@ -64,10 +64,16 @@
 }
 .topnav_section .nav_section.first,
 .topnav_section .nav_section.third {
-  width: 50%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+    width: 50%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.topnav_section .nav_section.first {
+    padding: 0 70px 0 0;
+}
+.topnav_section .nav_section.third {
+    padding: 0 0 0 70px;
 }
 .topnav_section .nav_section.first > ul,
 .topnav_section .nav_section.third > ul {
@@ -86,11 +92,16 @@
   zoom: 1;
   font-size: 100%;
 }
-.topnav_section .nav_section.second {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 100;
+.topnav_section .nav_section.second, .topnav_section .nav_section.second img {
+    position: absolute;
+    left: -99%;
+    right: -99%;
+    top: -99%;
+    bottom: -99%;
+    margin:auto;
+    z-index: 100;
+    max-width:160px;
+    height:auto;
 }
 .topnav_section .nav_section.first > div,
 .topnav_section .nav_section.first > ul {
